@@ -19,27 +19,27 @@ import android.widget.TextView;
  */
 public class FiveStarsDialog  implements DialogInterface.OnClickListener{
 
-    private final static String DEFAULT_TITLE = "Rate this app";
-    private final static String DEFAULT_TEXT = "How much do you love our app?";
-    private final static String DEFAULT_POSITIVE = "Ok";
-    private final static String DEFAULT_NEGATIVE = "Not Now";
-    private final static String DEFAULT_NEVER = "Never";
-    private final static String SP_NUM_OF_ACCESS = "numOfAccess";
-    private static final String SP_DISABLED = "disabled";
-    private static final String TAG = FiveStarsDialog.class.getSimpleName();
-    private final Context context;
-    private boolean isForceMode = false;
+    protected final static String DEFAULT_TITLE = "Rate this app";
+    protected final static String DEFAULT_TEXT = "How much do you love our app?";
+    protected final static String DEFAULT_POSITIVE = "Ok";
+    protected final static String DEFAULT_NEGATIVE = "Not Now";
+    protected final static String DEFAULT_NEVER = "Never";
+    protected final static String SP_NUM_OF_ACCESS = "numOfAccess";
+    protected static final String SP_DISABLED = "disabled";
+    protected static final String TAG = FiveStarsDialog.class.getSimpleName();
+    protected final Context context;
+    protected boolean isForceMode = false;
     SharedPreferences sharedPrefs;
-    private String supportEmail;
-    private TextView contentTextView;
-    private RatingBar ratingBar;
-    private String title = null;
-    private String rateText = null;
-    private AlertDialog alertDialog;
-    private View dialogView;
-    private int upperBound = 4;
-    private NegativeReviewListener negativeReviewListener;
-    private ReviewListener reviewListener;
+    protected String supportEmail;
+    protected TextView contentTextView;
+    protected RatingBar ratingBar;
+    protected String title = null;
+    protected String rateText = null;
+    protected AlertDialog alertDialog;
+    protected View dialogView;
+    protected int upperBound = 4;
+    protected NegativeReviewListener negativeReviewListener;
+    protected ReviewListener reviewListener;
 
 
     public FiveStarsDialog(Context context,String supportEmail){
@@ -48,7 +48,7 @@ public class FiveStarsDialog  implements DialogInterface.OnClickListener{
         this.supportEmail = supportEmail;
     }
 
-    private void build(){
+    protected void build(){
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         LayoutInflater inflater = LayoutInflater.from(context);
         dialogView = inflater.inflate(R.layout.stars, null);
@@ -78,14 +78,14 @@ public class FiveStarsDialog  implements DialogInterface.OnClickListener{
 
 
 
-    private void disable() {
+    protected void disable() {
         SharedPreferences shared = context.getSharedPreferences(context.getPackageName(), Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = shared.edit();
         editor.putBoolean(SP_DISABLED, true);
         editor.apply();
     }
 
-    private void openMarket() {
+    protected void openMarket() {
         final String appPackageName = context.getPackageName();
         try {
             context.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + appPackageName)));
