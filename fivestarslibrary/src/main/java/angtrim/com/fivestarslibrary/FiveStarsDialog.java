@@ -137,8 +137,8 @@ public class FiveStarsDialog  implements DialogInterface.OnClickListener{
                     negativeReviewListener.onNegativeReview((int)ratingBar.getRating());
                 }
 
-            }else if(!isForceMode){
-                openMarket();
+//            }else if(!isForceMode){
+//                openMarket();     //Make open market an optional action.
             }
             disable();
             if(reviewListener != null)
